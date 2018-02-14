@@ -5,14 +5,14 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Install Filebeat.
-  package: name=filebeat state=present
+- name: Install Metricbeat.
+  package: name=metricbeat state=present
 
 - include: config.yml
-  when: filebeat_create_config
+  when: metricbeat_create_config
 
-- name: Ensure Filebeat is started and enabled at boot.
+- name: Ensure Metricbeat is started and enabled at boot.
   service:
-    name: filebeat
+    name: metricbeat
     state: started
     enabled: yes

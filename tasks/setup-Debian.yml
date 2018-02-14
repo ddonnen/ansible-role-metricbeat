@@ -7,7 +7,7 @@
     url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
     state: present
 
-- name: Add Filebeat repository.
+- name: Add Metricbeat repository.
   apt_repository:
     repo: 'deb https://artifacts.elastic.co/packages/5.x/apt stable main'
     state: present

@@ -2,9 +2,8 @@
 dependencies: []
 
 galaxy_info:
-  author: geerlingguy
-  description: Filebeat for Linux.
-  company: "Midwestern Mac, LLC"
+  author: ddonnen
+  description: Metricbeat for Linux.
   license: "license (BSD, MIT)"
   min_ansible_version: 2.0
   platforms:

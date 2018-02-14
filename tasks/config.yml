@@ -1,26 +1,26 @@
 ---
-- name: Copy Filebeat configuration.
+- name: Copy Metricbeat configuration.
   template:
-    src: filebeat.yml.j2
-    dest: "/etc/filebeat/filebeat.yml"
+    src: metricbeat.yml.j2
+    dest: "/etc/metricbeat/metricbeat.yml"
     owner: root
     group: root
     mode: 0644
-  notify: restart filebeat
+  notify: restart metricbeat
 
-- name: Ensure Filebeat SSL key pair directory exists.
+- name: Ensure Metricbeat SSL key pair directory exists.
   file:
-    path: "{{ filebeat_ssl_dir }}"
+    path: "{{ metricbeat_ssl_dir }}"
     state: directory
-  when: filebeat_ssl_key_file
+  when: metricbeat_ssl_key_file
 
-- name: Copy SSL key and cert for filebeat.
+- name: Copy SSL key and cert for metricbeat.
   copy:
     src: "{{ item }}"
-    dest: "{{ filebeat_ssl_dir }}/{{ item | basename }}"
+    dest: "{{ metricbeat_ssl_dir }}/{{ item | basename }}"
     mode: 0644
   with_items:
-    - "{{ filebeat_ssl_key_file }}"
-    - "{{ filebeat_ssl_certificate_file }}"
-  notify: restart filebeat
-  when: filebeat_ssl_key_file and filebeat_ssl_certificate_file
+    - "{{ metricbeat_ssl_key_file }}"
+    - "{{ metricbeat_ssl_certificate_file }}"
+  notify: restart metricbeat
+  when: metricbeat_ssl_key_file and metricbeat_ssl_certificate_file
